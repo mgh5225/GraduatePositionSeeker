@@ -3,38 +3,38 @@ package gps
 import "github.com/google/uuid"
 
 type University struct {
-	ID   uuid.UUID `db:"id"`
-	Name string    `db:"name"`
+	ID   uuid.UUID `db:"id" json:"id"`
+	Name string    `db:"name" json:"name"`
 }
 
 type Faculty struct {
-	ID           uuid.UUID `db:"id"`
-	UniversityID uuid.UUID `db:"university_id"`
-	Name         string    `db:"name"`
+	ID           uuid.UUID `db:"id" json:"id"`
+	UniversityID uuid.UUID `db:"university_id" json:"university_id"`
+	Name         string    `db:"name" json:"name"`
 }
 
 type Interest struct {
-	ID   uuid.UUID `db:"id"`
-	Name string    `db:"name"`
+	ID   uuid.UUID `db:"id" json:"id"`
+	Name string    `db:"name" json:"name"`
 }
 
 type FacultyMember struct {
-	ID        uuid.UUID `db:"id"`
-	FacultyID uuid.UUID `db:"faculty_id"`
-	FirstName string    `db:"first_name"`
-	LastName  string    `db:"last_name"`
-	Email     string    `db:"email"`
+	ID        uuid.UUID `db:"id" json:"id"`
+	FacultyID uuid.UUID `db:"faculty_id" json:"faculty_id"`
+	FirstName string    `db:"first_name" json:"first_name"`
+	LastName  string    `db:"last_name" json:"last_name"`
+	Email     string    `db:"email" json:"email"`
 }
 
 type FacultyMemberInterest struct {
-	FacultyID  uuid.UUID `db:"faculty_id"`
-	InterestID uuid.UUID `db:"interest_id"`
+	FacultyID  uuid.UUID `db:"faculty_id" json:"faculty_id"`
+	InterestID uuid.UUID `db:"interest_id" json:"interest_id"`
 }
 
 type Template struct {
-	ID      uuid.UUID `db:"id"`
-	Subject string    `db:"subject"`
-	Body    string    `db:"body"`
+	ID      uuid.UUID `db:"id" json:"id"`
+	Subject string    `db:"subject" json:"subject"`
+	Body    string    `db:"body" json:"body"`
 }
 
 type UniversityStore interface {
