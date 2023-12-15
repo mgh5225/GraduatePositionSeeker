@@ -2,6 +2,7 @@ package web
 
 import (
 	"encoding/json"
+	"html/template"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -15,7 +16,11 @@ func NewHandler(store gps.Store) *Handler {
 		store: store,
 	}
 
+	fs := http.FileServer(http.Dir("static/"))
+
 	h.Use(middleware.Logger)
+	h.Get("/", h.Index())
+	h.Handle("/static/*", http.StripPrefix("/static/", fs))
 	h.Route("/universities", func(r chi.Router) {
 		r.Get("/", h.UniversityList())
 	})
@@ -27,6 +32,13 @@ type Handler struct {
 	*chi.Mux
 
 	store gps.Store
+}
+
+func (h *Handler) Index() http.HandlerFunc {
+	tmpl := template.Must(template.ParseFiles("templates/index.html"))
+	return func(w http.ResponseWriter, r *http.Request) {
+		tmpl.Execute(w, nil)
+	}
 }
 
 func (h *Handler) UniversityList() http.HandlerFunc {
