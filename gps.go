@@ -18,7 +18,7 @@ type Interest struct {
 	Name string    `db:"name"`
 }
 
-type FacultyMemeber struct {
+type FacultyMember struct {
 	ID        uuid.UUID `db:"id"`
 	FacultyID uuid.UUID `db:"faculty_id"`
 	FirstName string    `db:"first_name"`
@@ -26,7 +26,7 @@ type FacultyMemeber struct {
 	Email     string    `db:"email"`
 }
 
-type FacultyMemeberInterest struct {
+type FacultyMemberInterest struct {
 	FacultyID  uuid.UUID `db:"faculty_id"`
 	InterestID uuid.UUID `db:"interest_id"`
 }
@@ -61,11 +61,13 @@ type InterestStore interface {
 	DeleteInterest(id uuid.UUID) error
 }
 
-type FacultyMemeberStore interface {
-	FacultyMemeber(id uuid.UUID) (FacultyMemeber, error)
-	FacultyMemebers(f_id uuid.UUID) ([]FacultyMemeber, error)
-	CreateFacultyMember(fm *FacultyMemeber) error
-	UpdateFacultyMember(fm *FacultyMemeber) error
+type FacultyMemberStore interface {
+	FacultyMember(id uuid.UUID) (FacultyMember, error)
+	FacultyMembers(f_id uuid.UUID) ([]FacultyMember, error)
+	CreateFacultyMember(fm *FacultyMember) error
+	AddInterestToFacultyMember(fm_id uuid.UUID, i_id uuid.UUID) error
+	DeleteInterestFromFacultyMember(fm_id uuid.UUID, i_id uuid.UUID) error
+	UpdateFacultyMember(fm *FacultyMember) error
 	DeleteFacultyMember(id uuid.UUID) error
 }
 
@@ -75,4 +77,12 @@ type TemplateStore interface {
 	CreateTemplate(t *Template) error
 	UpdateTemplate(t *Template) error
 	DeleteTemplate(id uuid.UUID) error
+}
+
+type Store interface {
+	UniversityStore
+	FacultyStore
+	InterestStore
+	FacultyMemberStore
+	TemplateStore
 }
