@@ -9,3 +9,7 @@ adminer:
 migrate:
 	/home/$(USER)/go/bin/migrate -source file://migrations \
 												 -database postgres://postgres:secret@localhost/postgres?sslmode=disable up
+
+migrate-down:
+	/home/$(USER)/go/bin/migrate -source file://migrations \
+												 -database postgres://postgres:secret@localhost/postgres?sslmode=disable down
