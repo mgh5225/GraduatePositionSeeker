@@ -3,10 +3,8 @@ package postgres
 import (
 	"fmt"
 
-	_ "github.com/lib/pq"
-
 	"github.com/jmoiron/sqlx"
-	"github.com/mgh5225/gps"
+	_ "github.com/lib/pq"
 )
 
 func NewStore(dataSourceName string) (*Store, error) {
@@ -30,9 +28,9 @@ func NewStore(dataSourceName string) (*Store, error) {
 }
 
 type Store struct {
-	gps.UniversityStore
-	gps.FacultyStore
-	gps.InterestStore
-	gps.FacultyMemberStore
-	gps.TemplateStore
+	*UniversityStore
+	*FacultyStore
+	*InterestStore
+	*FacultyMemberStore
+	*TemplateStore
 }
