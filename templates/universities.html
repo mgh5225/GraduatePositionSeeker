@@ -1,15 +1,16 @@
 {{ define "body" }}
 
-<div class="container">
-  <h2>List of Universities</h2>
-  <div class="list-group">
-    {{ range .Univs }}
+<h2>List of Universities</h2>
+<div class="list-group">
+  {{ range .Univs }}
 
-    <a href="universities/{{ .ID }}" class="list-group-item list-group-item-action">
-      {{.Name}}
-    </a>
-    {{ end }}
-  </div>
+  <a
+    href="/universities/{{ .ID }}"
+    class="list-group-item list-group-item-action"
+  >
+    {{.Name}}
+  </a>
+  {{ end }}
 </div>
 
 {{ end }}

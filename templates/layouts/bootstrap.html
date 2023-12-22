@@ -1,20 +1,22 @@
 {{ define "bootstrap" }}
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/bootstrap.css" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="/static/assets/favico.ico"
+    />
+    <title>GPS</title>
+  </head>
+  {{ template "nav" . }}
+  <div class="container">{{ template "body" . }}</div>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/static/css/bootstrap.css" />
-  <link rel="shortcut icon" type="image/png" href="/static/assets/favico.ico" />
-  <title>GPS</title>
-</head>
-{{ template "nav" . }}
-<div class="container-fluid">{{ template "body" . }}</div>
-
-<body>
-  <script src="/static/js/bootstrap.js"></script>
-</body>
-
+  <body>
+    <script src="/static/js/bootstrap.js"></script>
+  </body>
 </html>
 {{ end }}

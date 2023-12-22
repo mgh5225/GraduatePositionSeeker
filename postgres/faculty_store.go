@@ -33,7 +33,7 @@ func (s *FacultyStore) Faculty(id uuid.UUID) (gps.Faculty, error) {
 func (s *FacultyStore) Faculties(u_id uuid.UUID) ([]gps.Faculty, error) {
 	var f []gps.Faculty
 
-	err := s.Get(&f, `select * from faculties where university_id=$1`, u_id)
+	err := s.Select(&f, `select * from faculties where university_id=$1`, u_id)
 
 	if err != nil {
 		return []gps.Faculty{}, fmt.Errorf("error getting faculties: %w", err)
