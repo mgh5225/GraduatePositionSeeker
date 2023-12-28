@@ -33,7 +33,7 @@ func (s *FacultyMemberStore) FacultyMember(id uuid.UUID) (gps.FacultyMember, err
 func (s *FacultyMemberStore) FacultyMembers(f_id uuid.UUID) ([]gps.FacultyMember, error) {
 	var fm []gps.FacultyMember
 
-	err := s.Get(&fm, `select * from faculty_members where faculty_id=$1`, f_id)
+	err := s.Select(&fm, `select * from faculty_members where faculty_id=$1`, f_id)
 
 	if err != nil {
 		return []gps.FacultyMember{}, fmt.Errorf("error getting faculty members: %w", err)

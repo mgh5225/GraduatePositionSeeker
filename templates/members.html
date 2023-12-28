@@ -1,0 +1,13 @@
+{{ define "body" }}
+
+<h2>List of Faculty Members</h2>
+<div class="list-group">
+  {{ range .Mems }}
+
+  <a href="#" class="list-group-item list-group-item-action">
+    {{.FirstName}} {{.LastName}}
+  </a>
+  {{ end }}
+</div>
+
+{{ end }}

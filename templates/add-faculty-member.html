@@ -1,0 +1,33 @@
+{{ define "body" }}
+<h2>Create Faculty Member</h2>
+<form method="post" action="/members/add">
+  <div class="mb-3">
+    <label for="universityID" class="form-label">University</label>
+    <select class="form-select" id="universityID" name="u-id" aria-label="Select University" required>
+      <option selected disabled>Select University</option>
+      {{ range .Univs }}
+      <option value="{{.ID}}">{{.Name}}</option>
+      {{ end }}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="facultyID" class="form-label">Faculty</label>
+    <select class="form-select" id="facultyID" name="f-id" aria-label="Select Faculty" required>
+      <option selected disabled>Select Faculty</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="firstName" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="firstName" name="first-name" required />
+  </div>
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="lastName" name="last-name" required />
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="text" class="form-control" id="email" name="email" required />
+  </div>
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>
+{{ end }}
